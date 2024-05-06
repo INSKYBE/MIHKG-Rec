@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="root@region-42.seetacloud.com:50356 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@region-42.seetacloud.com:50356 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
       <paths name="root@connect.beijinga.seetacloud.com:39699 password">
@@ -101,6 +101,14 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="zjb@10.65.185.70:22 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zjb/MIHKG-Rec" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

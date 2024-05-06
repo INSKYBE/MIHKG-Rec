@@ -1,6 +1,7 @@
 import torch
 import torch.nn.functional as F
 
+
 class Contrast(torch.nn.Module):
     def __init__(self, num_hidden: int, tau: float = 0.7):
         super(Contrast, self).__init__()
@@ -21,7 +22,7 @@ class Contrast(torch.nn.Module):
         z1 = F.normalize(z1)
         z2 = F.normalize(z2)
         return torch.mm(z1, z2.t())
-    
+
     def self_sim(self, z1, z2):
         z1 = F.normalize(z1)
         z2 = F.normalize(z2)

@@ -2,6 +2,7 @@ import os
 import re
 import logging
 
+
 def txt2list(file_src):
     orig_file = open(file_src, "r")
     lines = orig_file.readlines()
@@ -20,15 +21,18 @@ def uni2str(unicode_str):
 def hasNumbers(inputString):
     return bool(re.search(r'\d', inputString))
 
+
 def delMultiChar(inputString, chars):
     for ch in chars:
         inputString = inputString.replace(ch, '')
     return inputString
 
+
 def merge_two_dicts(x, y):
-    z = x.copy()   # start with x's keys and values
-    z.update(y)    # modifies z with y's keys and values & returns None
+    z = x.copy()  # start with x's keys and values
+    z.update(y)  # modifies z with y's keys and values & returns None
     return z
+
 
 def early_stopping(log_value, best_value, stopping_step, expected_order='acc', flag_step=100):
     # early stopping strategy:
@@ -47,6 +51,7 @@ def early_stopping(log_value, best_value, stopping_step, expected_order='acc', f
         should_stop = False
     return best_value, stopping_step, should_stop
 
+
 def ensure_file(dir_name, filename):
     log_files = os.listdir(dir_name)
     if filename in log_files:
@@ -58,12 +63,13 @@ def ensure_file(dir_name, filename):
         return ensure_file(dir_name, filename)
     return filename
 
+
 def init_logger(args, subdir=None):
     enable_fh = args.log
     logfilename = args.log_fn
     dataset = args.dataset
 
-    LOGROOT = './logs/'+dataset+'/'
+    LOGROOT = './logs/' + dataset + '/'
     dir_name = os.path.dirname(LOGROOT)
     if subdir is not None:
         dir_name = os.path.join(dir_name, subdir)
@@ -81,7 +87,7 @@ def init_logger(args, subdir=None):
     sh.setFormatter(sformatter)
 
     if enable_fh and logfilename is not None:
-        logfilename = logfilename+f'_{dataset}'+'.log'
+        logfilename = logfilename + f'_{dataset}' + '.log'
         logfilename = ensure_file(dir_name, logfilename)
         logfilepath = os.path.join(dir_name, logfilename)
         fh = logging.FileHandler(logfilepath)

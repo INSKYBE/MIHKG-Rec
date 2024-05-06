@@ -4,6 +4,7 @@ import networkx as nx
 import scipy.sparse as sp
 from collections import defaultdict
 import warnings
+
 warnings.filterwarnings('ignore')
 from termcolor import cprint
 
@@ -14,6 +15,7 @@ n_relations = 0
 n_nodes = 0
 train_user_set = defaultdict(list)
 test_user_set = defaultdict(list)
+
 
 def read_cf(file_name):
     inter_mat = list()
@@ -29,6 +31,7 @@ def read_cf(file_name):
 
     return np.array(inter_mat)
 
+
 def remap_item(train_data, test_data):
     global n_users, n_items
     n_users = max(max(train_data[:, 0]), max(test_data[:, 0])) + 1
@@ -38,6 +41,7 @@ def remap_item(train_data, test_data):
         train_user_set[int(u_id)].append(int(i_id))
     for u_id, i_id in test_data:
         test_user_set[int(u_id)].append(int(i_id))
+
 
 def read_triplets(file_name):
     global n_entities, n_relations, n_nodes
@@ -64,6 +68,7 @@ def read_triplets(file_name):
 
     return triplets
 
+
 def build_graph(train_data, triplets):
     ckg_graph = nx.MultiDiGraph()
     rd = defaultdict(list)
@@ -77,6 +82,7 @@ def build_graph(train_data, triplets):
         ckg_graph.add_edge(h_id, t_id, key=r_id)
 
     return ckg_graph, rd
+
 
 def build_sparse_relational_graph(relation_dict):
     def _bi_norm_lap(adj):
@@ -118,6 +124,7 @@ def build_sparse_relational_graph(relation_dict):
 
     return adj_mat_list, norm_mat_list, mean_mat_list
 
+
 def load_data(model_args):
     global args
     args = model_args
@@ -151,4 +158,4 @@ def load_data(model_args):
     }
 
     return train_cf, test_cf, user_dict, n_params, graph, \
-           [adj_mat_list, norm_mat_list, mean_mat_list]
+        [adj_mat_list, norm_mat_list, mean_mat_list]

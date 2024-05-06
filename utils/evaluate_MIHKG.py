@@ -26,10 +26,10 @@ def test(model, user_dict, n_params, args):
     model.eval()
     with torch.no_grad():
         start_time = time()
-        user_embeddings, item_embeddings = model.generate()  # 预计算所有用户和物品的嵌入
+        user_embeddings, item_embeddings = model.generate()  # Expect to count all users and items embedded
         print(f"All embeddings generated in {time() - start_time:.2f} seconds.")
 
-        # 分批处理用户
+        # Batch users
         user_indices = list(test_user_set.keys())
         n_batches = int(np.ceil(len(user_indices) / float(batch_size)))
 
@@ -41,7 +41,8 @@ def test(model, user_dict, n_params, args):
 
             print(f"Processing batch {batch_num + 1}/{n_batches}... (users {start_index} to {end_index})")
             user_embedding_batch = user_embeddings[users_batch]
-            scores = torch.matmul(user_embedding_batch, item_embeddings.t())  # 计算所有用户对所有物品的得分
+            scores = torch.matmul(user_embedding_batch,
+                                  item_embeddings.t())  # Calculate all users' scores for all items
 
             for i, user in enumerate(users_batch):
                 pos_items = test_user_set[user]

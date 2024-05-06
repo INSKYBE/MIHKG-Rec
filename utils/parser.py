@@ -8,7 +8,8 @@ def parse_args_MIHKG():
     parser.add_argument('--log', action='store_true', default=False, help='log in file or not')
     parser.add_argument('--log_fn', type=str, default=None, help='log file_name')
     # ===== dataset ===== #
-    parser.add_argument("--dataset", nargs="?", default="last-fm", help="Choose a dataset:[last-fm,amazon-book,alibaba]")
+    parser.add_argument("--dataset", nargs="?", default="last-fm",
+                        help="Choose a dataset:[last-fm,amazon-book,alibaba]")
     parser.add_argument(
         "--data_path", nargs="?", default="data/", help="Input data path."
     )
@@ -25,7 +26,7 @@ def parse_args_MIHKG():
 
     # ===== train ===== #
     parser.add_argument('--epoch', type=int, default=1000, help='number of epochs')
-    parser.add_argument('--batch_size', type=int, default=2048, help='batch size')
+    parser.add_argument('--batch_size', type=int, default=4096, help='batch size')
     parser.add_argument('--test_batch_size', type=int, default=2048, help='batch size')
     parser.add_argument('--dim', type=int, default=64, help='embedding size')
     parser.add_argument('--l2', type=float, default=1e-5, help='l2 regularization weight')
