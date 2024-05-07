@@ -5,7 +5,7 @@ def parse_args_MIHKG():
     parser = argparse.ArgumentParser(description="MKG")
     # ===== log ===== #
     parser.add_argument('--desc', type=str, default="", help='EXP description')
-    parser.add_argument('--log', action='store_true', default=False, help='log in file or not')
+    parser.add_argument('--log', action='store_true', default=True, help='log in file or not')
     parser.add_argument('--log_fn', type=str, default=None, help='log file_name')
     # ===== dataset ===== #
     parser.add_argument("--dataset", nargs="?", default="last-fm",
@@ -47,7 +47,7 @@ def parse_args_MIHKG():
     # ===== relation context ===== #
     parser.add_argument('--context_hops', type=int, default=2, help='number of context hops')
     # ===== save model ===== #
-    parser.add_argument("--save", action='store_true', default=False, help="save model or not")
-    parser.add_argument("--out_dir", type=str, default="./weights/", help="output directory for model")
+    parser.add_argument("--save", action='store_true', default=True, help="save model or not")
+    parser.add_argument("--out_dir", type=str, default="weights/", help="output directory for model")
 
     return parser.parse_args()
